@@ -1,24 +1,28 @@
 package com.xalion95.xpackutils;
 
+import com.xalion95.xpackutils.handler.ConfigurationHandler;
 import com.xalion95.xpackutils.proxy.IProxy;
+import com.xalion95.xpackutils.reference.Reference;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = "XPackUtils", name = "X-Pack Utilities", version = "1.7.10-1.0")
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
 
 public class XPackUtils {
 
-    @Mod.Instance("XPackUtils")
+    @Mod.Instance(Reference.MOD_ID)
     public static XPackUtils instance;
 
-    @SidedProxy(clientSide = "com.xalion95.xpackutils.proxy.ClientProxy", serverSide = "com.xalion95.xpackutils.proxy.ServerProxy")
+    @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS ,serverSide = Reference.SERVER_PROXY_CLASS)
     public static IProxy proxy;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
+
+        ConfigurationHandler.init(event.getSuggestedConfigurationFile());
 
     }
 
@@ -31,4 +35,5 @@ public class XPackUtils {
     public void postInit(FMLPostInitializationEvent event){
 
     }
+
 }
