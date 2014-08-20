@@ -3,13 +3,14 @@ package com.xalion95.xpackutils;
 import com.xalion95.xpackutils.handler.ConfigurationHandler;
 import com.xalion95.xpackutils.proxy.IProxy;
 import com.xalion95.xpackutils.reference.Reference;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 
 public class XPackUtils {
 
@@ -23,6 +24,7 @@ public class XPackUtils {
     public void preInit(FMLPreInitializationEvent event){
 
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 
     }
 

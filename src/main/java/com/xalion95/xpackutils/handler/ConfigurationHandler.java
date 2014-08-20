@@ -8,28 +8,30 @@ import java.io.File;
 
 public class ConfigurationHandler {
 
-    public static Configuration configuration;
-    public static boolean UPDATE_CHECK = true;
+    public static Configuration configFile;
 
-    public static void init(File configFile) {
+    // Register Booleans
 
-        if (configuration == null) {
+    public static boolean CONFIG_UPDATE_CHECK = true;
+
+    public static void init(File configName) {
+
+        if (configFile == null) {
 
             // Create the configuration object
-            configuration = new Configuration(configFile);
-            loadConfiguration();
+            configFile = new Configuration(configName);
+            syncConfig();
 
         }
     }
 
-    private static void loadConfiguration(){
+    private static void syncConfig(){
 
-        UPDATE_CHECK = configuration.getBoolean("Check for pack updates", Configuration.CATEGORY_GENERAL, true, "This is an option to check updates for the modpack");
-        //System.out.println(UPDATE_CHECK);
+        CONFIG_UPDATE_CHECK = configFile.getBoolean("Check for pack updates", Configuration.CATEGORY_GENERAL, true, "This is an option to check updates for the modpack");
 
-        if (configuration.hasChanged()){
+        if (configFile.hasChanged()){
 
-            configuration.save();
+            configFile.save();
 
         }
 
@@ -40,7 +42,7 @@ public class ConfigurationHandler {
 
         if (event.modID.equalsIgnoreCase(Reference.MOD_ID)){
 
-            loadConfiguration();
+            syncConfig();
 
         }
 
