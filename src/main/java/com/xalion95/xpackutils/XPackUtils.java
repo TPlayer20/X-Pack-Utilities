@@ -3,6 +3,7 @@ package com.xalion95.xpackutils;
 import com.xalion95.xpackutils.handler.ConfigurationHandler;
 import com.xalion95.xpackutils.proxy.IProxy;
 import com.xalion95.xpackutils.reference.Reference;
+import com.xalion95.xpackutils.utility.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -23,6 +24,8 @@ public class XPackUtils {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
 
+        LogHelper.info("This is a MineCarft X-Pack ModPack by XalionGaming");
+        LogHelper.info("Starting initialization of ModPack");
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 
@@ -35,6 +38,8 @@ public class XPackUtils {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event){
+
+        LogHelper.info("ModPack Initialization completed!!!");
 
     }
 
