@@ -1,6 +1,7 @@
 package com.xalion95.xpackutils;
 
 import com.xalion95.xpackutils.handler.ConfigurationHandler;
+import com.xalion95.xpackutils.init.ModItems;
 import com.xalion95.xpackutils.proxy.IProxy;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.utility.LogHelper;
@@ -28,6 +29,7 @@ public class XPackUtils {
         LogHelper.info("Starting initialization of ModPack");
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+        ModItems.init();
 
     }
 
