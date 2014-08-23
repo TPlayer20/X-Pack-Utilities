@@ -18,7 +18,7 @@ import java.util.StringTokenizer;
 public class URLHandler {
 
 
-    public static boolean urlReader(){
+    private static boolean urlReader(){
 
         try {
             URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE);
@@ -65,7 +65,7 @@ public class URLHandler {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public void playerLogged(PlayerEvent.PlayerLoggedInEvent event){
+    private void playerLogged(PlayerEvent.PlayerLoggedInEvent event){
         if(urlReader()) {
             event.player.addChatMessage(new ChatComponentText("§2[§r§5" + Reference.MOD_NAME + "§r§2]" + "§r§6" + VNet.updateMessage + "§r"));
         }
