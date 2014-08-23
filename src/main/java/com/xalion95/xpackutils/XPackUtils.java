@@ -1,8 +1,10 @@
 package com.xalion95.xpackutils;
 
 import com.xalion95.xpackutils.handler.ConfigurationHandler;
-import com.xalion95.xpackutils.init.ModItems;
+import com.xalion95.xpackutils.handler.URLHandler;
+//import com.xalion95.xpackutils.init.ModItems;
 import com.xalion95.xpackutils.proxy.IProxy;
+import com.xalion95.xpackutils.reference.RConfig;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.utility.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -11,6 +13,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartedEvent;
+
+
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 
@@ -29,7 +34,9 @@ public class XPackUtils {
         LogHelper.info("Starting initialization of ModPack");
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
-        ModItems.init();
+        FMLCommonHandler.instance().bus().register(new URLHandler());
+        System.out.print(RConfig.CONFIG_BOOLEAN_GENERAL_UPDATE_CHECK);
+        //ModItems.init();
 
     }
 
@@ -43,6 +50,11 @@ public class XPackUtils {
 
         LogHelper.info("ModPack Initialization completed!!!");
 
+    }
+
+    @Mod.EventHandler
+    public void worldStart(FMLServerStartedEvent event){
+        URLHandler.urlReader();
     }
 
 }
