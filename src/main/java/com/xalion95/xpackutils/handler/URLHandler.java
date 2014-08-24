@@ -11,10 +11,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
@@ -60,7 +56,7 @@ public class URLHandler {
 
         if (VNet.informClients && RConfig.CONFIG_BOOLEAN_GENERAL_UPDATE_CHECK) {
             if (VNet.packVersion > Reference.CURRENT_VERSION) {
-                LogHelper.warn("You are using the old version of modpack! Going to inform the chat...");
+                LogHelper.warn("You are using the old version of modpack! Clients going to inform users...");
                 return true;
             } else if (VNet.packVersion <= Reference.CURRENT_VERSION) {
                 LogHelper.info("You are using the most up-to-date version of modpack!");
