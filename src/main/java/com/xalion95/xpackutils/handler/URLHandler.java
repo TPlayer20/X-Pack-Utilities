@@ -4,12 +4,17 @@ package com.xalion95.xpackutils.handler;
 import com.xalion95.xpackutils.reference.RConfig;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.reference.VNet;
+import com.xalion95.xpackutils.utility.ChatHelper;
+import com.xalion95.xpackutils.utility.ColorHelper;
 import com.xalion95.xpackutils.utility.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
@@ -21,7 +26,7 @@ public class URLHandler {
     public static boolean urlReader(){
 
         try {
-            URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE);
+            URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE_1_7_10);
             Scanner versionCheck = new Scanner(updateService.openStream());
 
             StringTokenizer strtok;
@@ -42,6 +47,11 @@ public class URLHandler {
             strtok=new StringTokenizer(strtmp, "=");
             strtok.nextToken();
             VNet.updateMessage = strtok.nextToken();
+
+            strtmp=versionCheck.nextLine();
+            strtok=new StringTokenizer(strtmp, "=");
+            strtok.nextToken();
+            VNet.updateMessage2 = strtok.nextToken();
 
         } catch (IOException e){
             LogHelper.warn("An error has occured while while connecting to X-Pack Services!");
@@ -65,9 +75,10 @@ public class URLHandler {
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public void playerLogged(PlayerEvent.PlayerLoggedInEvent event){
+    public void informClient(PlayerEvent.PlayerLoggedInEvent event){
         if(urlReader()) {
-            event.player.addChatMessage(new ChatComponentText("§2[§r§5" + Reference.MOD_NAME + "§r§2]" + "§r§6" + VNet.updateMessage + "§r"));
+            ChatHelper.printChatMessage(ColorHelper.setColor.DARK_GREEN.ColorString("[") + ColorHelper.setColor.DARK_PURPLE.ColorString(Reference.MOD_NAME) + ColorHelper.setColor.DARK_GREEN.ColorString("]") + ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage));
+            ChatHelper.printChatMessage(ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage2));
         }
     }
 }

@@ -51,10 +51,4 @@ public class XPackUtils {
         LogHelper.info("ModPack Initialization completed!!!");
 
     }
-
-    @Mod.EventHandler
-    public void worldStart(FMLServerStartedEvent event){
-        URLHandler.urlReader();
-    }
-
 }
