@@ -2,11 +2,10 @@ package com.xalion95.xpackutils;
 
 import com.xalion95.xpackutils.handler.ConfigurationHandler;
 import com.xalion95.xpackutils.handler.URLHandler;
-//import com.xalion95.xpackutils.init.ModItems;
 import com.xalion95.xpackutils.proxy.IProxy;
-import com.xalion95.xpackutils.reference.RConfig;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.utility.LogHelper;
+import com.xalion95.xpackutils.validator.*;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -16,6 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartedEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
 
@@ -32,13 +32,16 @@ public class XPackUtils {
     public void preInit(FMLPreInitializationEvent event){
 
         LogHelper.info("This is a MineCarft X-Pack ModPack by XalionGaming");
+        OS.check();
+        JavaArch.check();
+        jvmArgs.check();
+        RAM.check();
+        javaV.check();
+        javaU.check();
         LogHelper.info("Starting initialization of ModPack");
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
         FMLCommonHandler.instance().bus().register(new URLHandler());
-        System.out.print(RConfig.CONFIG_BOOLEAN_GENERAL_UPDATE_CHECK);
-        //ModItems.init();
-
     }
 
     @Mod.EventHandler

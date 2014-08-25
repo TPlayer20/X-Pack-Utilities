@@ -23,7 +23,7 @@ public class URLHandler {
 
         try {
             URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE_1_7_10);
-            Scanner versionCheck = new Scanner(updateService.openStream());
+            Scanner versionCheck = new Scanner(updateService.openStream(), "UTF-8");
 
             StringTokenizer strtok;
             String strtmp;
