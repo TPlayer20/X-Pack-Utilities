@@ -19,7 +19,11 @@ public class jvmArgs {
         List<String> getFromCheck = runtimeMXBean.getInputArguments();
         String[] arguments = getFromCheck.toArray(new String[getFromCheck.size()]);
 
-        Tokenizer = new StringTokenizer(arguments[0], "-Xmx");
+        for(int counter=0;counter<arguments.length;counter++){
+            System.out.print(arguments[counter]);
+        }
+
+        /*Tokenizer = new StringTokenizer(arguments[0], "-Xmx");
         String xmxBefore = Tokenizer.nextToken();
         Tokenizer = new StringTokenizer(xmxBefore, "G");
         int xmx = Integer.parseInt(Tokenizer.nextToken());
@@ -34,7 +38,7 @@ public class jvmArgs {
             System.exit(0);
         } else {
             LogHelper.info("JVM arguments are correct...");
-        }
+        }*/
     }
 
 }
