@@ -20,8 +20,8 @@ public class javaV {
         Tokenizer.nextToken();
         int jre = Integer.parseInt(Tokenizer.nextToken());
 
-        if(jre != 8){
-            JOptionPane.showMessageDialog(null, "Nie posiadasz oprogramowania Java w wersji '8'. Nie możesz uruchomić paczki modów X-Pack!", "Błąd oprogramowania Java", JOptionPane.ERROR_MESSAGE);
+        if(jre != 7){
+            JOptionPane.showMessageDialog(null, "Nie posiadasz oprogramowania Java w wersji '7'. Nie możesz uruchomić paczki modów X-Pack!", "Błąd oprogramowania Java", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
             LogHelper.info("JRE version is correct..");
