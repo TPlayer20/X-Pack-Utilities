@@ -30,7 +30,7 @@ public class jvmArgs {
         int xms = Integer.parseInt(Tokenizer.nextToken());
 
         if(xmx < 2 || xms < 1){
-            JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM (minimalne: -Xmx2G -Xms1G) lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony http://xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM (minimalne: -Xmx2G -Xms1G) lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         } else {
             LogHelper.info("JVM arguments are correct...");
