@@ -9,10 +9,7 @@ import com.xalion95.xpackutils.validator.*;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartedEvent;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,15 +26,18 @@ public class XPackUtils {
     public static IProxy proxy;
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event){
-
-        LogHelper.info("This is a MineCarft X-Pack ModPack by XalionGaming");
+    public void construct(FMLConstructionEvent event){
+        LogHelper.info("This is a MineCraft X-Pack ModPack by XalionGaming");
+        javaV.check();
         OS.check();
         JavaArch.check();
-        jvmArgs.check();
         RAM.check();
-        javaV.check();
+        jvmArgs.check();
         javaU.check();
+    }
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event){
         LogHelper.info("Starting initialization of ModPack");
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
