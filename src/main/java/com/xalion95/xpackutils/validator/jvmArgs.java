@@ -2,7 +2,6 @@ package com.xalion95.xpackutils.validator;
 
 import com.xalion95.xpackutils.utility.LogHelper;
 import javax.swing.*;
-import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.util.List;
@@ -42,7 +41,7 @@ public class jvmArgs {
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
             if(xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 || !arguments[5].equals("-Dfml.ignoreInvalidMinecraftCertificates=true") || !arguments[6].equals("-Dfml.ignorePatchDiscrepancies=true")){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM (minimalne: -Xmx2G -Xms1G) lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             } else {
                 LogHelper.info("JVM arguments are correct");
@@ -50,9 +49,8 @@ public class jvmArgs {
 
 
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM (minimalne: -Xmx2G -Xms1G) lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
     }
-
 }
