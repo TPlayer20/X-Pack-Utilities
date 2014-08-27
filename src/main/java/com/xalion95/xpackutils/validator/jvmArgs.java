@@ -20,7 +20,9 @@ public class jvmArgs {
             List<String> getFromCheck = runtimeMXBean.getInputArguments();
             String[] arguments = getFromCheck.toArray(new String[getFromCheck.size()]);
 
-            System.out.println(arguments.length);
+            for (int counter=0;counter<arguments.length;counter++){
+                System.out.println(counter + "\t" + arguments[counter]);
+            }
 
             Tokenizer = new StringTokenizer(arguments[1], "-Xmx");
             String xmxBefore = Tokenizer.nextToken();
