@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 public class javaU{
     public static void check(){
         LogHelper.info("Checking JRE update...");
+        JOptionPane error = new JOptionPane("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizację!", JOptionPane.INFORMATION_MESSAGE);
         try{
             URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE_JAVA);
             Scanner updatecheck = new Scanner(updateService.openStream(), "UTF-8");
@@ -30,7 +31,11 @@ public class javaU{
             int localUpdate = Integer.parseInt(Tokenizer.nextToken());
 
             if(localUpdate < newestUpdate){
-                JOptionPane.showMessageDialog(null, "Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizację!", "Bład oprogramowania Java", JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = error.createDialog("Dostępna Aktualizacja");
+                dialog.setAlwaysOnTop(true);
+                dialog.setModal(true);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
             } else {
                 LogHelper.info("JRE update is correct...");
             }

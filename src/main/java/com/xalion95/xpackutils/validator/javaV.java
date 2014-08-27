@@ -9,6 +9,7 @@ public class javaV {
     public static void check(){
 
         LogHelper.info("Checking JRE version...");
+        JOptionPane error = new JOptionPane("Nie posiadasz oprogramowania Java w wersji '7'. Nie możesz uruchomić paczki modów X-Pack!", JOptionPane.ERROR_MESSAGE);
 
         StringTokenizer Tokenizer;
         String localVersion = System.getProperty("java.version");
@@ -21,7 +22,11 @@ public class javaV {
         int jre = Integer.parseInt(Tokenizer.nextToken());
 
         if(jre != 7){
-            JOptionPane.showMessageDialog(null, "Nie posiadasz oprogramowania Java w wersji '7'. Nie możesz uruchomić paczki modów X-Pack!", "Błąd oprogramowania Java", JOptionPane.ERROR_MESSAGE);
+            JDialog dialog = error.createDialog("Błąd oprogramowania Java");
+            dialog.setAlwaysOnTop(true);
+            dialog.setModal(true);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setVisible(true);
             System.exit(0);
         } else {
             LogHelper.info("JRE version is correct..");

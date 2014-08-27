@@ -28,10 +28,10 @@ public class XPackUtils {
     @Mod.EventHandler
     public void construct(FMLConstructionEvent event){
         LogHelper.info("This is a MineCraft X-Pack ModPack by XalionGaming");
-        javaV.check();
         OS.check();
-        JavaArch.check();
         RAM.check();
+        JavaArch.check();
+        javaV.check();
         jvmArgs.check();
         javaU.check();
     }

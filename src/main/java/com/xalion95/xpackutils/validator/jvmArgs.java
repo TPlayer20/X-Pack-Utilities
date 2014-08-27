@@ -13,18 +13,14 @@ public class jvmArgs {
     public static void check() {
 
         LogHelper.info("Checking JVM arguments...");
-
+        JOptionPane error = new JOptionPane("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", JOptionPane.ERROR_MESSAGE);
         try {
             StringTokenizer Tokenizer;
 
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
             List<String> getFromCheck = runtimeMXBean.getInputArguments();
-            String[] arguments = getFromCheck.toArray(new String[getFromCheck.size()]);
-
-            if(arguments.length > 10){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            }
+            String[] arguments;
+            arguments = getFromCheck.toArray(new String[getFromCheck.size()]);
 
             Tokenizer = new StringTokenizer(arguments[1], "-Xmx");
             String xmxBefore = Tokenizer.nextToken();
@@ -46,21 +42,36 @@ public class jvmArgs {
             Tokenizer = new StringTokenizer(xxBefore, "m");
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
-            if(xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+            if (xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ) {
+                JDialog dialog = error.createDialog("Błąd argumentów");
+                dialog.setAlwaysOnTop(true);
+                dialog.setModal(true);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
                 System.exit(0);
-            } else if (!Arrays.asList(arguments).contains("-Dfml.ignoreInvalidMinecraftCertificates=true")){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+            } else if(!Arrays.asList(arguments).contains("-Dfml.ignoreInvalidMinecraftCertificates=true")) {
+                JDialog dialog = error.createDialog("Błąd argumentów");
+                dialog.setAlwaysOnTop(true);
+                dialog.setModal(true);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
                 System.exit(0);
-            } else if (!Arrays.asList(arguments).contains("-Dfml.ignorePatchDiscrepancies=true")){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+            } else if(!Arrays.asList(arguments).contains("-Dfml.ignorePatchDiscrepancies=true")){
+                JDialog dialog = error.createDialog("Błąd argumentów");
+                dialog.setAlwaysOnTop(true);
+                dialog.setModal(true);
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                dialog.setVisible(true);
                 System.exit(0);
             } else {
                 LogHelper.info("JVM arguments are correct");
             }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+        } catch (NumberFormatException e){
+            JDialog dialog = error.createDialog("Błąd argumentów");
+            dialog.setAlwaysOnTop(true);
+            dialog.setModal(true);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.setVisible(true);
             System.exit(0);
         }
     }
