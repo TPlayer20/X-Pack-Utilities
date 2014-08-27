@@ -9,11 +9,11 @@ import java.util.StringTokenizer;
 
 public class jvmArgs {
 
-    public static void check(){
+    public static void check() {
 
         LogHelper.info("Checking JVM arguments...");
 
-        try{
+        try {
             StringTokenizer Tokenizer;
 
             RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
@@ -40,13 +40,18 @@ public class jvmArgs {
             Tokenizer = new StringTokenizer(xxBefore, "m");
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
-            if(xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 || !arguments[5].equals("-Dfml.ignoreInvalidMinecraftCertificates=true") || !arguments[6].equals("-Dfml.ignorePatchDiscrepancies=true")){
+            if(xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ){
+                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            } else if(!"-Dfml.ignoreInvalidMinecraftCertificates=true".equals(arguments[5])){
+                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
+            } else if(!"-Dfml.ignorePatchDiscrepancies=true".equals(arguments[6])){
                 JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             } else {
                 LogHelper.info("JVM arguments are correct");
             }
-
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
