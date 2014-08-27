@@ -20,8 +20,9 @@ public class jvmArgs {
             List<String> getFromCheck = runtimeMXBean.getInputArguments();
             String[] arguments = getFromCheck.toArray(new String[getFromCheck.size()]);
 
-            for (int counter=0;counter<arguments.length;counter++){
-                System.out.println(counter + "\t" + arguments[counter]);
+            if(arguments.length > 8){
+                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
+                System.exit(0);
             }
 
             Tokenizer = new StringTokenizer(arguments[1], "-Xmx");
@@ -45,12 +46,6 @@ public class jvmArgs {
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
             if(xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            } else if(!"-Dfml.ignoreInvalidMinecraftCertificates=true".equals(arguments[5])){
-                JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
-                System.exit(0);
-            } else if(!"-Dfml.ignorePatchDiscrepancies=true".equals(arguments[6])){
                 JOptionPane.showMessageDialog(null, "Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", "Błąd argumentów", JOptionPane.ERROR_MESSAGE);
                 System.exit(0);
             } else {
