@@ -1,7 +1,7 @@
 package com.xalion95.xpackutils.validator;
 
+import com.xalion95.xpackutils.client.gui.guiFrame;
 import com.xalion95.xpackutils.utility.LogHelper;
-import javax.swing.*;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.util.Arrays;
@@ -13,7 +13,6 @@ public class jvmArgs {
     public static void check() {
 
         LogHelper.info("Checking JVM arguments...");
-        JOptionPane error = new JOptionPane("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/download.", JOptionPane.ERROR_MESSAGE);
         try {
             StringTokenizer Tokenizer;
 
@@ -43,36 +42,19 @@ public class jvmArgs {
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
             if (xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ) {
-                JDialog dialog = error.createDialog("Błąd argumentów");
-                dialog.setAlwaysOnTop(true);
-                dialog.setModal(true);
-                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialog.setVisible(true);
-                System.exit(0);
+                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignoreInvalidMinecraftCertificates=true")) {
-                JDialog dialog = error.createDialog("Błąd argumentów");
-                dialog.setAlwaysOnTop(true);
-                dialog.setModal(true);
-                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialog.setVisible(true);
-                System.exit(0);
+                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignorePatchDiscrepancies=true")){
-                JDialog dialog = error.createDialog("Błąd argumentów");
-                dialog.setAlwaysOnTop(true);
-                dialog.setModal(true);
-                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialog.setVisible(true);
-                System.exit(0);
+                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+            } else if(!Arrays.asList(arguments).contains("-Dswing.defaultlaf=com.sun.java.swing.plaf.windows.WindowsLookAndFeel")){
+                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
             } else {
                 LogHelper.info("JVM arguments are correct");
             }
         } catch (NumberFormatException e){
-            JDialog dialog = error.createDialog("Błąd argumentów");
-            dialog.setAlwaysOnTop(true);
-            dialog.setModal(true);
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-            System.exit(0);
+            guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+
         }
     }
 }

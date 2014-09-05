@@ -1,9 +1,8 @@
 package com.xalion95.xpackutils.validator;
 
+import com.xalion95.xpackutils.client.gui.guiFrame;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.utility.LogHelper;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
@@ -12,7 +11,6 @@ import java.util.StringTokenizer;
 public class javaU{
     public static void check(){
         LogHelper.info("Checking JRE update...");
-        JOptionPane error = new JOptionPane("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizację!", JOptionPane.INFORMATION_MESSAGE);
         try{
             URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE_JAVA);
             Scanner updatecheck = new Scanner(updateService.openStream(), "UTF-8");
@@ -31,11 +29,7 @@ public class javaU{
             int localUpdate = Integer.parseInt(Tokenizer.nextToken());
 
             if(localUpdate < newestUpdate){
-                JDialog dialog = error.createDialog("Dostępna Aktualizacja");
-                dialog.setAlwaysOnTop(true);
-                dialog.setModal(true);
-                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                dialog.setVisible(true);
+                guiFrame.displayInform("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizację!", "Dostępna Aktualizacja");
             } else {
                 LogHelper.info("JRE update is correct...");
             }
