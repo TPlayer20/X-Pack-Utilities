@@ -1,12 +1,9 @@
-package com.xalion95.xpackutils.handler;
+package com.xalion95.xpackutils.utility;
 
-
+import com.xalion95.xpackutils.XPackUtils;
 import com.xalion95.xpackutils.reference.RConfig;
 import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.reference.VNet;
-import com.xalion95.xpackutils.utility.ChatHelper;
-import com.xalion95.xpackutils.utility.ColorHelper;
-import com.xalion95.xpackutils.utility.LogHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -16,9 +13,7 @@ import java.net.URL;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class URLHandler {
-
-
+public class updateChecker {
     public static boolean urlReader(){
 
         try {
@@ -56,7 +51,6 @@ public class URLHandler {
 
         if (VNet.informClients && RConfig.CONFIG_BOOLEAN_GENERAL_UPDATE_CHECK) {
             if (VNet.packVersion > Reference.CURRENT_VERSION) {
-                LogHelper.warn("You are using the old version of modpack! Clients going to inform users...");
                 return true;
             } else if (VNet.packVersion <= Reference.CURRENT_VERSION) {
                 LogHelper.info("You are using the most up-to-date version of modpack!");
@@ -66,15 +60,15 @@ public class URLHandler {
                 return false;
             }
         }
+
         return false;
     }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
-    public void informClient(PlayerEvent.PlayerLoggedInEvent event){
-        if(urlReader()) {
-            ChatHelper.printChatMessage(ColorHelper.setColor.DARK_GREEN.ColorString("[") + ColorHelper.setColor.DARK_PURPLE.ColorString(Reference.MOD_NAME) + ColorHelper.setColor.DARK_GREEN.ColorString("]") + ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage));
-            ChatHelper.printChatMessage(ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage2));
+    public void go(PlayerEvent.PlayerLoggedInEvent event){
+        if(urlReader()){
+            XPackUtils.proxy.inform();
         }
     }
 }

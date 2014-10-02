@@ -13,6 +13,7 @@ public class jvmArgs {
     public static void check() {
 
         LogHelper.info("Checking JVM arguments...");
+
         try {
             StringTokenizer Tokenizer;
 
@@ -46,8 +47,6 @@ public class jvmArgs {
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignoreInvalidMinecraftCertificates=true")) {
                 guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignorePatchDiscrepancies=true")){
-                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
-            } else if(!Arrays.asList(arguments).contains("-Dswing.defaultlaf=com.sun.java.swing.plaf.windows.WindowsLookAndFeel")){
                 guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
             } else {
                 LogHelper.info("JVM arguments are correct");
