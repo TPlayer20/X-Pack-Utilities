@@ -43,16 +43,16 @@ public class jvmArgs {
             int xx = Integer.parseInt(Tokenizer.nextToken());
 
             if (xmx < 2 || xms < 1 || xxmax < 2048 || xx < 1024 ) {
-                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+                guiFrame.displayError("Nie u\u017cywasz zalecanych argument\u00f3w JVM lub ich sk\u0142adnia jest niepoprawna. Zalecamy skopiowa\u0107 JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "B\u0142\u0105d argument\u00f3w");
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignoreInvalidMinecraftCertificates=true")) {
-                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+                guiFrame.displayError("Nie u\u017cywasz zalecanych argument\u00f3w JVM lub ich sk\u0142adnia jest niepoprawna. Zalecamy skopiowa\u0107 JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "B\u0142\u0105d argument\u00f3w");
             } else if(!Arrays.asList(arguments).contains("-Dfml.ignorePatchDiscrepancies=true")){
-                guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+                guiFrame.displayError("Nie u\u017cywasz zalecanych argument\u00f3w JVM lub ich sk\u0142adnia jest niepoprawna. Zalecamy skopiowa\u0107 JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "B\u0142\u0105d argument\u00f3w");
             } else {
                 LogHelper.info("JVM arguments are correct");
             }
         } catch (NumberFormatException e){
-            guiFrame.displayError("Nie używasz zalecanych argumentów JVM lub ich składnia jest niepoprawna. Zalecamy skopiować JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "Błąd argumentów");
+            guiFrame.displayError("Nie u\u017cywasz zalecanych argument\u00f3w JVM lub ich sk\u0142adnia jest niepoprawna. Zalecamy skopiowa\u0107 JVM Arguments ze strony xpack.pl/repo/instrukcja.html.", "B\u0142\u0105d argument\u00f3w");
 
         }
     }

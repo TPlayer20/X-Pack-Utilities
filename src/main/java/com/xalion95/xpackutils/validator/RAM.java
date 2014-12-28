@@ -11,7 +11,7 @@ public class RAM {
         long memorySize = ((com.sun.management.OperatingSystemMXBean)ManagementFactory.getOperatingSystemMXBean()).getTotalPhysicalMemorySize();
         long requestedMemory = 4000000000L;
         if(memorySize < requestedMemory){
-            guiFrame.displayError("Nie posiadasz wymaganej minimalnej ilości fizycznej pamięci RAM (4GB). Nie możesz uruchomić paczki modów X-Pack!", "Błąd pamięci RAM");
+            guiFrame.displayError("Nie posiadasz wymaganej minimalnej ilo\u015bci fizycznej pami\u0119ci RAM (4GB). Nie mo\u017cesz uruchomi\u0107 paczki mod\u00f3w X-Pack!", "B\u0142\u0105d pami\u0119ci RAM");
         } else {
             LogHelper.info("The RAM amount is correct...");
         }

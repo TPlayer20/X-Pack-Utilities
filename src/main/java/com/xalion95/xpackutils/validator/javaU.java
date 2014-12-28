@@ -29,7 +29,7 @@ public class javaU{
             int localUpdate = Integer.parseInt(Tokenizer.nextToken());
 
             if(localUpdate < newestUpdate){
-                guiFrame.displayInform("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizację!", "Dostępna Aktualizacja");
+                guiFrame.displayInform("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizacj\u0119!", "Dost\u0119pna Aktualizacja");
             } else {
                 LogHelper.info("JRE update is correct...");
             }

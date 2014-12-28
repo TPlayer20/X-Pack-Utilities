@@ -10,7 +10,7 @@ public class OS {
         LogHelper.info("Checking the system architecture...");
         String os = System.getProperty("os.arch");
         if (!os.equals("amd64")){
-            guiFrame.displayError("Nie posiadasz systemu w wersji 64-bitowej. Nie możesz uruchomić paczki modów X-Pack!", "Błąd systemu");
+            guiFrame.displayError("Nie posiadasz systemu w wersji 64-bitowej. Nie mo\u017cesz uruchomi\u0107 paczki mod\u00f3w X-Pack!", "B\u0142\u0105d systemu");
         } else {
             LogHelper.info("The system architecture is correct...");
         }
