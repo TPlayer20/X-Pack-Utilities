@@ -10,6 +10,6 @@ public class Reference {
     public static final String GUI_FACTORY_CLASS = "com.xalion95.xpackutils.client.gui.GuiFactory";
     public static final String UPDATE_HOSTNAME = "http://xpack.pl";
     public static final String UPDATE_FILE_1_7_10 = "/version1.7.10.txt";
-    public static final String UPDATE_FILE_JAVA = "/javaversion.txt";
-    public static final int CURRENT_VERSION = 3;
+    public static final String UPDATE_FILE_JAVA = "/java8version.txt";
+    public static final int CURRENT_VERSION = 4;
 }

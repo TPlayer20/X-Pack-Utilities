@@ -1,5 +1,7 @@
 package com.xalion95.xpackutils.client.gui;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+
 import javax.swing.*;
 
 public class guiFrame {
@@ -18,6 +20,6 @@ public class guiFrame {
         dialog.setModal(true);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.setVisible(true);
-        System.exit(0);
+        FMLCommonHandler.instance().exitJava(0, false);
     }
 }
