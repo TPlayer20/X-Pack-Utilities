@@ -63,13 +63,14 @@ processResources
 	exclude '**/*.xcf'
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
+    inputs.property "modversion", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
                 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':project.minecraft.version, 'modversion':"${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
     }
         
     // copy everything else, thats not the mcmod.info
