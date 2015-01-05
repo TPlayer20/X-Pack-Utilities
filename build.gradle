@@ -79,17 +79,26 @@ processResources
     }
 }
 
-task devJar(type: Jar, dependsOn: 'classes') {
-	from(sourceSets.main.output) {
-		include '**'
-	}
+jar {
+    extension = 'jar'
+    classifier = 'universal'
+}
 
-	extension = 'jar'
-	classifier = 'dev'
+task sourceZip(type: Zip) {
+    from sourceSets.main.allSource
+    extension = 'zip'
+    classifier = 'src'
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    extension = 'jar'
+    classifier = 'deobf'
 }
 
 artifacts {
-	archives devJar
+    archives sourceZip
+    archives deobfJar
 }
 
 sourceSets { main { output.resourcesDir = output.classesDir } }
