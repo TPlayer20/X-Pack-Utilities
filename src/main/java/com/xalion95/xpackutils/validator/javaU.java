@@ -1,7 +1,6 @@
 package com.xalion95.xpackutils.validator;
 
 import com.xalion95.xpackutils.client.gui.guiFrame;
-import com.xalion95.xpackutils.reference.Reference;
 import com.xalion95.xpackutils.utility.LogHelper;
 import java.io.IOException;
 import java.net.URL;
@@ -12,14 +11,14 @@ public class javaU{
     public static void check(){
         LogHelper.info("Checking JRE update...");
         try{
-            URL updateService = new URL(Reference.UPDATE_HOSTNAME + Reference.UPDATE_FILE_JAVA);
+            URL updateService = new URL("http", "java.com", 80, "applet/JreCurrentVersion2.txt");
             Scanner updatecheck = new Scanner(updateService.openStream(), "UTF-8");
 
             StringTokenizer Tokenizer;
             String temp;
 
             temp = updatecheck.nextLine();
-            Tokenizer = new StringTokenizer(temp, " = ");
+            Tokenizer = new StringTokenizer(temp, "_");
             Tokenizer.nextToken();
             int newestUpdate = Integer.parseInt(Tokenizer.nextToken());
 

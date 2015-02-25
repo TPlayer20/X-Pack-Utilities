@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public class guiFrame {
     public static void displayInform(String ErrorText, String Title){
-        JOptionPane error = new JOptionPane(ErrorText, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane error = new JOptionPane(ErrorText, JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{"Kontynuuj wczytywanie gry"}, null);
         JDialog dialog = error.createDialog(Title);
         dialog.setAlwaysOnTop(true);
         dialog.setModal(true);
