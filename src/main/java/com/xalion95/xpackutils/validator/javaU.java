@@ -11,7 +11,7 @@ public class javaU{
     public static void check(){
         LogHelper.info("Checking JRE update...");
         try{
-            URL updateService = new URL("http", "java.com", 80, "applet/JreCurrentVersion2.txt");
+            URL updateService = new URL("http://java.com/applet/JreCurrentVersion2.txt");
             Scanner updatecheck = new Scanner(updateService.openStream(), "UTF-8");
 
             StringTokenizer Tokenizer;
@@ -35,7 +35,7 @@ public class javaU{
 
         } catch (IOException e){
 
-            LogHelper.warn("An error has occured while while connecting to X-Pack Services!");
+            LogHelper.warn("An error has occured while while connecting to Java Servers!");
 
         }
     }
