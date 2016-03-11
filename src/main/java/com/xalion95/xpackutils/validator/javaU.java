@@ -11,23 +11,17 @@ public class javaU{
     public static void check(){
         LogHelper.info("Checking JRE update...");
         try{
-            URL updateService = new URL("http://java.com/applet/JreCurrentVersion2.txt");
-            Scanner updatecheck = new Scanner(updateService.openStream(), "UTF-8");
+            URL updateServer = new URL("http://xpack.pl/java8version.txt");
+            Scanner scanner = new Scanner(updateServer.openStream(), "UTF-8");
+            String temp = scanner.nextLine();
+            StringTokenizer tokenizer = new StringTokenizer(temp, " =");
+            tokenizer.nextToken();
+            int update = Integer.parseInt(tokenizer.nextToken());
+            String local = System.getProperty("java.version");
+            String[] data = local.split("_");
+            int localNumber = Integer.parseInt(data[1]);
 
-            StringTokenizer Tokenizer;
-            String temp;
-
-            temp = updatecheck.nextLine();
-            Tokenizer = new StringTokenizer(temp, "_");
-            Tokenizer.nextToken();
-            int newestUpdate = Integer.parseInt(Tokenizer.nextToken());
-
-            temp = System.getProperty("java.version");
-            Tokenizer = new StringTokenizer(temp, "_");
-            Tokenizer.nextToken();
-            int localUpdate = Integer.parseInt(Tokenizer.nextToken());
-
-            if(localUpdate < newestUpdate){
+            if(localNumber < update){
                 guiFrame.displayInform("Nie posiadasz aktualnej wersji oprogramowania Java. Zalecamy aktualizacj\u0119!", "Dost\u0119pna Aktualizacja");
             } else {
                 LogHelper.info("JRE update is correct...");
@@ -35,7 +29,7 @@ public class javaU{
 
         } catch (IOException e){
 
-            LogHelper.warn("An error has occured while while connecting to Java Servers!");
+            LogHelper.warn("An error has occured while while connecting to X-Pack Servers!");
 
         }
     }

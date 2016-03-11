@@ -36,10 +36,10 @@ minecraft {
     runDir = "eclipse"
 	
 	replaceIn "reference/Reference.java"
-	replace "@VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
+	replace "@VERSION@", "${config.mod_version}.${config.build_number}"
 }
 
-version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
+version = "${config.minecraft_version}-${config.mod_version}.${config.build_number}"
 
 dependencies {
     // you may put jars on which you depend on in ./libs
