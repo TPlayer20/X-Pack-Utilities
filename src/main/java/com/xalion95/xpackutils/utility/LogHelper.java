@@ -1,12 +1,12 @@
 package com.xalion95.xpackutils.utility;
 
 import com.xalion95.xpackutils.reference.Reference;
-import cpw.mods.fml.common.FMLLog;
+import net.minecraftforge.fml.common.FMLLog;
 import org.apache.logging.log4j.Level;
 
 public class LogHelper{
 
-    public static void log(Level logLevel, Object object){
+    private static void log(Level logLevel, Object object){
 
         FMLLog.log(Reference.MOD_NAME, logLevel, String.valueOf(object));
     }

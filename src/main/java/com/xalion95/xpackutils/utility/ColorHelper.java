@@ -28,11 +28,11 @@ public class ColorHelper {
         RESET('r');
         private String index;
 
-        private setColor(int index) {
+        setColor(int index) {
             this.index = String.valueOf(index);
         }
 
-        private setColor(String index) {
+        setColor(String index) {
             this.index = index;
         }
 

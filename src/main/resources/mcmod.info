@@ -1,6 +1,6 @@
 [
 {
-  "modid": "XPackUtils",
+  "modid": "xpackutils",
   "name": "X-Pack Utilities",
   "description": "X-Pack Utilities is a mod designed especially for Minecraft X-Pack Public Modpack by XalionGaming( http://www.xpack.pl ).",
   "version": "${modversion}",

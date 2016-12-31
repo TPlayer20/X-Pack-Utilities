@@ -1,6 +1,6 @@
 package com.xalion95.xpackutils.client.gui;
 
-import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 
 import javax.swing.*;
 

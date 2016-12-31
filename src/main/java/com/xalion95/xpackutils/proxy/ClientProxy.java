@@ -28,7 +28,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void inform() {
         ChatHelper.printChatMessage(ColorHelper.setColor.DARK_GREEN.ColorString("[") + ColorHelper.setColor.DARK_PURPLE.ColorString(Reference.MOD_NAME) + ColorHelper.setColor.DARK_GREEN.ColorString("]") + ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage));
-        ChatHelper.printChatMessage(ColorHelper.setColor.GOLD.ColorString(VNet.updateMessage2));
     }
 
     @Override

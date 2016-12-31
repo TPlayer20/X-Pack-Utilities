@@ -16,6 +16,6 @@ public class ServerProxy extends CommonProxy {
 
     @Override
     public void informSrv() {
-        LogHelper.warn("You are using the old version of modpack! Clients going to inform users...");
+        LogHelper.warn("You are using the old version of modpack! Clients are going to inform users...");
     }
 }
